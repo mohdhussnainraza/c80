@@ -1,43 +1,50 @@
-var las_position_of_x, last_position_of_y;
-color ="blank";
-width_of_line = 2;
-
-canvas = document.getElementById('myCanvas');
-ctx = canvas.getContext("2d");
-
-var width = screen.width;
-new_width = screen.width - 70;
-new_height = screen.height - 300;
-    if(width < 992)
-    {
-    document.getElementById("myCanvas").width = new_width;
-    document.getElementById("myCanvas").height = new_height;
-    document.body.style.overflow = "hidden";
-    }
-
-    canvas.addEventlistener("touchstart", my_touchstart);
-
-    function my_touchstart(e)
-    {
-        console.log("my_touchstart");
-
-      color = document.getElementById("color").value;
-      width_of_line = document.getElementById("width_of_line").value;
-
-
-      last_position_of_x = e.touches[0].clientX - canvas.offsetLeft;
-      last_position_of_y = e.touches[0].clientY - canvas.offsetTop;
-    }
-    canvas.addEventListener("touchmove", my_touchmove);
+var names_of_people = [];
     
+function submit()
+{
+    var GuestName = document.getElementById("name1").value;
+	// use the push function as - names_of_people.push(GuestName);
+	names_of_people.push(guestname);
+	console.log(GuestName); 
+    console.log(names_of_people.push);
+    var lenght_of_name = names_of_people.length;
+    console.log(lenght_of_name);
+	document.getElementById("display_name").innerHTML=names_of_people.toString();
+   }
 
-    function my_touchmove(e)
-    {
-
-        console.log("my_touchMove");
-        current_position_of_touch_x = e.touches[0].clientY - canvas.offsetLeft;
-        current_position_of_touch_y = e.touches[0].clientY - canvas.offsetTop;
 
 
-        ctx.beginPath();
-        ctx.strokeStyle = color
+function show()
+{
+	var i= names_of_people.join("<br>");
+	console.log(names_of_people);
+	document.getElementById("p1").innerHTML=i.toString();
+	document.getElementById("sort_button").style.display="block";
+	
+}
+
+
+function sorting()
+	{
+		names_of_people_sort          // add the sort function here
+		// .sort();
+		var i= names_of_people.join("<br>");
+		console.log(names_of_people);		
+		document.getElementById("sorted").innerHTML=i.toString();
+		}
+
+
+function searching()
+{
+	var s= document.getElementById("s1").value;
+	var found=0;
+	var j;
+	for(j=0; j<names_of_people.length; j++)
+		{
+			if(s==names_of_people[j]){
+				found=found+1;
+			}	
+		}
+	document.getElementById("p2").innerHTML="name found "+found+" time/s";
+	console.log("found name "+found+" time/s");
+}
